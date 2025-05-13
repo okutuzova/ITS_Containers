@@ -1,0 +1,26 @@
+<!-- frontend/public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Frontend</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1 id="message">Loading...</h1>
+    </div>
+    <script>
+        fetch('/data')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('message').innerText = data.message;
+            })
+            .catch(err => {
+                document.getElementById('message').innerText = 'Error loading message';
+                console.error(err);
+            });
+    </script>
+</body>
+</html>
